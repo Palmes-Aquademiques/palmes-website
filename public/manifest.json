@@ -1,6 +1,6 @@
 {
-  "name": "Next.js Notion Starter Kit",
-  "short_name": "Starter Kit",
+  "name": "Les Palmes Aquadémiques",
+  "short_name": "Les Palmes",
   "icons": [
     {
       "src": "/favicon.png",
@@ -8,9 +8,9 @@
       "sizes": "32x32"
     },
     {
-      "src": "/favicon-128x128.png",
+      "src": "/favicon-180x180.png",
       "type": "image/png",
-      "sizes": "128x128"
+      "sizes": "180x180"
     },
     {
       "src": "/favicon-192x192.png",
