@@ -90,32 +90,12 @@
   color: #2795e9;
 }
 
-.twitter:hover {
-  color: #2795e9;
+.facebook:hover {
+  color: #157DC3;
 }
 
-.mastodon:hover {
-  color: #5a4be1;
-}
-
-.zhihu:hover {
-  color: #0066ff;
-}
-
-.github:hover {
-  color: #c9510c;
-}
-
-.youtube:hover {
-  color: #ff0000;
-}
-
-.linkedin:hover {
-  color: #0077b5;
-}
-
-.newsletter:hover {
-  color: #777777;
+.email:hover {
+  color: #00ab6c;
 }
 
 .comments {

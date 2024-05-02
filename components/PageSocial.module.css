@@ -73,10 +73,7 @@
 }
 
 .facebook .actionBgPane {
-  background: #3b5998;
-}
-.facebook:hover {
-  border-color: #3b5998;
+  background: #157DC3;
 }
 
 .twitter .actionBgPane {
@@ -122,10 +119,10 @@
 }
 
 .email .actionBgPane {
-  background: #777;
+  background: #00ab6c;
 }
 .email:hover {
-  border-color: #777;
+  border-color: #00ab6c;
 }
 
 @media only screen and (max-width: 768px) {

@@ -17,12 +17,8 @@ export default siteConfig({
   description: 'Club associatif de plongée sous-marine et de nage en eau vive (NEV), affilié à la FFESSM',
 
   // social usernames (optional)
-  twitter: 'palmes',
-  // github: 'transitive-bullshit',
-  // linkedin: 'fisch2',
-  // mastodon: '#', // optional mastodon profile URL, provides link verification
-  // newsletter: '#', // optional newsletter URL
-  // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
+  facebook: 'palmes.aquademiques',
+  email: 'palmes.aquademiques@gmail.com',
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
