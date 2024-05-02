@@ -17,7 +17,7 @@ export default siteConfig({
   description: 'Club associatif de plongée sous-marine et de nage en eau vive (NEV), affilié à la FFESSM',
 
   // social usernames (optional)
-  // twitter: 'transitive_bs',
+  twitter: 'palmes',
   // github: 'transitive-bullshit',
   // linkedin: 'fisch2',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
