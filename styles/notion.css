@@ -7,11 +7,6 @@
  * places to add some flare.
  */
 
-.notion {
-  --notion-max-width: 720px;
-  --notion-header-height: 54px;
-}
-
 .notion-frame {
   padding: 0;
 }
@@ -41,16 +36,6 @@
 .notion-asset-wrapper-video > div,
 .notion-asset-wrapper-video video {
   width: 100% !important;
-}
-
-.notion-header .notion-nav-header {
-  max-width: 1100px;
-  margin: 0 auto;
-  overflow-x: auto;
-}
-
-.notion-nav-header-rhs {
-  gap: 0.5rem;
 }
 
 .notion-gallery-grid {

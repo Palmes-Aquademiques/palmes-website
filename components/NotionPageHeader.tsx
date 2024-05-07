@@ -43,11 +43,11 @@ export const NotionPageHeader: React.FC<{
   }
 
   return (
-    <header className='notion-header'>
+    <header className='h-16 notion-header'>
       <div className='notion-nav-header'>
         <Breadcrumbs block={block} rootOnly={true} />
 
-        <div className='notion-nav-header-rhs breadcrumbs'>
+        <div className='notion-nav-header-rhs gap-0.5'>
           {navigationLinks
             ?.map((link, index) => {
               if (!link.pageId && !link.url) {
@@ -59,7 +59,7 @@ export const NotionPageHeader: React.FC<{
                   <components.PageLink
                     href={mapPageUrl(link.pageId)}
                     key={index}
-                    className={cs(styles.navLink, 'breadcrumb', 'button')}
+                    className='breadcrumb button'
                   >
                     {link.title}
                   </components.PageLink>
@@ -69,7 +69,7 @@ export const NotionPageHeader: React.FC<{
                   <components.Link
                     href={link.url}
                     key={index}
-                    className={cs(styles.navLink, 'breadcrumb', 'button')}
+                    className='breadcrumb button'
                   >
                     {link.title}
                   </components.Link>
