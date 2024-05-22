@@ -54,6 +54,14 @@ export default siteConfig({
       pageId: '64db3c2922704fefbad52285036d7111'
     },
     {
+      title: 'Blog',
+      pageId: '999088bd0eca4069a45b18bf2eb0c2ab'
+    },
+    {
+      title: 'Galerie',
+      pageId: '73e5da04ef2845ffbeb7db3d4bb41fa2'
+    },
+    {
       title: 'Contact',
       pageId: 'a50c7ff573ab4e918a5c0d90cad2db62'
     }

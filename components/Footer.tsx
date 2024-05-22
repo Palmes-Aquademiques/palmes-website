@@ -13,8 +13,9 @@ export const FooterImpl: React.FC = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className={styles.footer}>
-      <div className={styles.copyright}>Copyright {currentYear} {config.author}</div>
+    <footer className='flex flex-col items-center justify-between w-screen p-4 sm:flex-row bg-palmes-light gap-4'>
+      <div>Made with ❤️ and 🤿 in Toulouse</div>
+      <div>Copyright {currentYear} {config.author}</div>
 
       <div className={styles.social}>
         {config.facebook && (

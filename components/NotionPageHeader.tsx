@@ -43,7 +43,7 @@ export const NotionPageHeader: React.FC<{
   }
 
   return (
-    <header className='h-16 notion-header'>
+    <header className='h-20 bg-palmes-light bg-opacity-80 backdrop-saturate-150 backdrop-blur-lg drop-shadow-lg notion-header'>
       <div className='notion-nav-header'>
         <Breadcrumbs block={block} rootOnly={true} />
 
@@ -59,7 +59,7 @@ export const NotionPageHeader: React.FC<{
                   <components.PageLink
                     href={mapPageUrl(link.pageId)}
                     key={index}
-                    className='breadcrumb button'
+                    className='text-palmes-dark rounded-lg font-medium px-5 py-2.5 text-center bg-opacity-50 text-lg hidden md:inline-block hover:text-white'
                   >
                     {link.title}
                   </components.PageLink>
