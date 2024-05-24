@@ -10,7 +10,6 @@ import {
   formatDate,
   getBlockTitle,
   getPageProperty,
-  parsePageId
 } from 'notion-utils'
 import BodyClassName from 'react-body-classname'
 import { NotionRenderer } from 'react-notion-x'
@@ -18,11 +17,9 @@ import { useSearchParam } from 'react-use'
 
 import * as config from '@/lib/config'
 import * as types from '@/lib/types'
-import { getSiteConfig } from '@/lib/get-config-value'
 import { mapImageUrl } from '@/lib/map-image-url'
 import { getCanonicalPageUrl, mapPageUrl } from '@/lib/map-page-url'
 import { searchNotion } from '@/lib/search-notion'
-import { NavigationLink } from '@/lib/site-config'
 import { useDarkMode } from '@/lib/use-dark-mode'
 
 import { Footer } from './Footer'
@@ -140,8 +137,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const keys = Object.keys(recordMap?.block || {})
   const block = recordMap?.block?.[keys[0]]?.value
 
-  const isRootPage =
-    parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
+  // const isRootPage =
+  //  parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
   // const isGalleryPage =
   //   parsePageId(block?.id) ===
   //   parsePageId(
