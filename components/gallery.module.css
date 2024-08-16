@@ -1,0 +1,11 @@
+.gallery {
+  @apply w-full max-w-7xl;
+}
+
+.gallery img {
+  @apply rounded-lg;
+}
+
+.gallery h1 {
+  @apply hidden;
+}
