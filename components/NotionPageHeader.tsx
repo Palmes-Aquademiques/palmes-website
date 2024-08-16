@@ -1,6 +1,8 @@
 import * as React from 'react'
 
 import * as types from 'notion-types'
+import cs from 'classnames'
+import { parsePageId } from 'notion-utils'
 import { Breadcrumbs, Header, Search, useNotionContext } from 'react-notion-x'
 
 import { isSearchEnabled, navigationLinks, navigationStyle } from '@/lib/config'
@@ -31,20 +33,13 @@ export const NotionPageHeader: React.FC<{
                   <components.PageLink
                     href={mapPageUrl(link.pageId)}
                     key={index}
-                    className='text-palmes-dark rounded-lg font-medium px-5 py-2.5 text-center bg-opacity-50 text-lg hidden md:inline-block hover:text-white'
+                    className={cs(
+                      'text-palmes-dark rounded-lg font-medium px-5 py-2.5 text-center bg-opacity-50 text-lg hidden md:inline-block hover:text-white',
+                      link.pageId === parsePageId(block?.id).replaceAll('-', '') ? 'text-white' : ''
+                    )}
                   >
                     {link.title}
                   </components.PageLink>
-                )
-              } else {
-                return (
-                  <components.Link
-                    href={link.url}
-                    key={index}
-                    className='breadcrumb button'
-                  >
-                    {link.title}
-                  </components.Link>
                 )
               }
             })
