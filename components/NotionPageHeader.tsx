@@ -16,7 +16,7 @@ export const NotionPageHeader: React.FC<{
 
   return (
     <header className='h-20 bg-palmes-light bg-opacity-80 backdrop-saturate-150 backdrop-blur-lg drop-shadow-lg notion-header'>
-      <div className='notion-nav-header'>
+      <div className='mx-auto notion-nav-header max-w-7xl'>
         <Breadcrumbs block={block} rootOnly={true} />
 
         <div className='notion-nav-header-rhs gap-0.5'>
