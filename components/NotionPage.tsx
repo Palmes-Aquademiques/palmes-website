@@ -137,15 +137,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const keys = Object.keys(recordMap?.block || {})
   const block = recordMap?.block?.[keys[0]]?.value
 
-  // const isRootPage =
-  //  parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
-  // const isGalleryPage =
-  //   parsePageId(block?.id) ===
-  //   parsePageId(
-  //     getSiteConfig<NavigationLink[]>('navigationLinks', [])?.find(
-  //       ({ title }) => title === 'Galerie'
-  //     ).pageId
-  //   )
   const isBlogPost =
     block?.type === 'page' && block?.parent_table === 'collection'
 
