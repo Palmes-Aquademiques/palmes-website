@@ -15,7 +15,7 @@
 }
 
 .notion-header .breadcrumb .notion-page-icon-image {
-  @apply w-16 h-16 max-h-16 max-w-16;
+  @apply w-16 h-16 overflow-visible max-h-16 max-w-16;
 }
 
 .notion-page-cover {
