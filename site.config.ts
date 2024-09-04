@@ -9,7 +9,7 @@ export default siteConfig({
   rootNotionSpaceId: 'dc8530a0-66bf-45fc-975c-71930ad1cb32',
 
   // basic site info (required)
-  name: 'Les Palmes ',
+  name: 'Les Palmes Aquadémiques',
   domain: 'staging.lespalmesaquademiques.fr',
   author: 'Les Palmes Aquadémiques',
 

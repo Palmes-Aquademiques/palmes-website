@@ -3,8 +3,9 @@ import Link from 'next/link'
 
 import * as types from 'notion-types'
 import { parsePageId } from 'notion-utils'
-import { Breadcrumbs, Header, Search, useNotionContext } from 'react-notion-x'
+import { Header, Search, useNotionContext } from 'react-notion-x'
 
+import { Breadcrumbs } from '@/components/Breadcrumbs'
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -57,7 +58,7 @@ export const NotionPageHeader: React.FC<{
   return (
     <header className='h-20 bg-palmes-light bg-opacity-80 backdrop-saturate-150 backdrop-blur-lg drop-shadow-lg notion-header'>
       <div className='mx-auto notion-nav-header max-w-7xl'>
-        <Breadcrumbs block={block} rootOnly={true} />
+        <Breadcrumbs block={block} />
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
