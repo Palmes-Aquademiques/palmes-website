@@ -56,12 +56,78 @@ export const NotionPageHeader: React.FC<{
   }
 
   return (
-    <header className='h-20 bg-palmes-light bg-opacity-80 backdrop-saturate-150 backdrop-blur-lg drop-shadow-lg notion-header'>
+    <header className='h-20 overflow-visible bg-palmes-light bg-opacity-80 backdrop-saturate-150 backdrop-blur-lg drop-shadow-lg notion-header'>
       <div className='mx-auto notion-nav-header max-w-7xl'>
         <Breadcrumbs block={block} />
         <NavigationMenu>
           <NavigationMenuList>
-            <NavigationMenuItem>
+            {navigationLinks?.map((link, index) => {
+              if (link.subPages) {
+                return (
+                  <NavigationMenuItem key={link.pageId}>
+                    <NavigationMenuTrigger>{link.title}</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <ul className='flex w-64 p-4 gap-3'>
+                        <li>
+                          {link.subPages.map((link) => (
+                            <components.PageLink
+                              href={mapPageUrl(link.pageId)}
+                              key={index}
+                              className={cn(
+                                'text-palmes-dark rounded-lg font-medium px-3 py-2.5 text-center bg-opacity-50 text-lg hidden md:inline-block'
+                              )}
+                            >
+                              {link.title}
+                            </components.PageLink>
+                          ))}
+                        </li>
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                )
+              }
+              if (link.pageId) {
+                return (
+                  <NavigationMenuItem key={link.pageId}>
+                    <components.PageLink
+                      href={mapPageUrl(link.pageId)}
+                      key={index}
+                      className={cn(
+                        navigationMenuTriggerStyle(),
+                        link.pageId ===
+                          parsePageId(block?.id).replaceAll('-', '')
+                          ? 'text-white'
+                          : ''
+                      )}
+                    >
+                      {link.title}
+                    </components.PageLink>
+                  </NavigationMenuItem>
+                )
+              }
+            })}
+          </NavigationMenuList>
+          <NavigationMenuIndicator />
+          <NavigationMenuViewport className='z-5000' />
+        </NavigationMenu>
+      </div>
+    </header>
+  )
+}
+/**
+                  <components.PageLink
+                    href={mapPageUrl(link.pageId)}
+                    key={index}
+                    className={cn(
+                      'text-palmes-dark rounded-lg font-medium px-5 py-2.5 text-center bg-opacity-50 text-lg hidden md:inline-block hover:text-white',
+                      link.pageId === parsePageId(block?.id).replaceAll('-', '')
+                        ? 'text-white'
+                        : ''
+                    )}
+                  >
+                    {link.title}
+                  </components.PageLink>
+                )
               <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className='grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]'>
@@ -99,45 +165,4 @@ export const NotionPageHeader: React.FC<{
             <NavigationMenuItem>
               <NavigationMenuTrigger>Components</NavigationMenuTrigger>
             </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href='/docs' legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Documentation
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-          <NavigationMenuViewport className='z-5000' />
-        </NavigationMenu>
-        <div className='notion-nav-header-rhs gap-0.5'>
-          {navigationLinks
-            ?.map((link, index) => {
-              if (!link.pageId && !link.url) {
-                return null
-              }
-
-              if (link.pageId) {
-                return (
-                  <components.PageLink
-                    href={mapPageUrl(link.pageId)}
-                    key={index}
-                    className={cn(
-                      'text-palmes-dark rounded-lg font-medium px-5 py-2.5 text-center bg-opacity-50 text-lg hidden md:inline-block hover:text-white',
-                      link.pageId === parsePageId(block?.id).replaceAll('-', '')
-                        ? 'text-white'
-                        : ''
-                    )}
-                  >
-                    {link.title}
-                  </components.PageLink>
-                )
-              }
-            })
-            .filter(Boolean)}
-
-          {isSearchEnabled && <Search block={block} title={null} />}
-        </div>
-      </div>
-    </header>
-  )
-}
+        */

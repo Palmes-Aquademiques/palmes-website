@@ -11,7 +11,7 @@ export interface SiteConfig {
   language?: string
 
   facebook?: string
-  email?: string;
+  email?: string
 
   defaultPageIcon?: string | null
   defaultPageCover?: string | null
@@ -34,6 +34,7 @@ export interface NavigationLink {
   title: string
   pageId?: string
   url?: string
+  subPages?: NavigationLink[]
 }
 
 export const siteConfig = (config: SiteConfig): SiteConfig => {
