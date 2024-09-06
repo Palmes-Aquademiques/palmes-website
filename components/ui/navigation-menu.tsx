@@ -41,7 +41,7 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName
 const NavigationMenuItem = NavigationMenuPrimitive.Item
 
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50 text-palmes-dark bg-opacity-50 text-lg hidden md:inline-block hover:text-white"
+  "group inline-flex h-10 w-max items-center justify-center rounded-md bg-palmes-light px-4 py-2 text-sm font-medium transition-colors hover:bg--100 hover:text-palmes-light-900 focus:bg-palmes-light-100 focus:text-palmes-light-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-palmes-light-100/50 data-[state=open]:bg-palmes-light-100/50 dark:bg-palmes-light-950 dark:hover:bg-palmes-light-800 dark:hover:text-palmes-light-50 dark:focus:bg-palmes-light-800 dark:focus:text-palmes-light-50 dark:data-[active]:bg-palmes-light-800/50 dark:data-[state=open]:bg-palmes-light-800/50"
 )
 
 const NavigationMenuTrigger = React.forwardRef<
@@ -86,7 +86,7 @@ const NavigationMenuViewport = React.forwardRef<
   <div className={cn("absolute left-0 top-full flex justify-center")}>
     <NavigationMenuPrimitive.Viewport
       className={cn(
-        "origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border border-slate-200 bg-white text-slate-950 shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)] dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50",
+        "origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border border--200 bg-palmes-light text-palmes-light-950 shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)] dark:border-palmes-light-800 dark:bg-palmes-light-950 dark:text-palmes-light-50",
         className
       )}
       ref={ref}
@@ -109,7 +109,7 @@ const NavigationMenuIndicator = React.forwardRef<
     )}
     {...props}
   >
-    <div className="relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg-slate-200 shadow-md dark:bg-slate-800" />
+    <div className="relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg--200 shadow-md dark:bg-palmes-light-800" />
   </NavigationMenuPrimitive.Indicator>
 ))
 NavigationMenuIndicator.displayName =
