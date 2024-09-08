@@ -8,6 +8,7 @@
  */
 
 :root {
+  --notion-header-height: 5rem;
 }
 
 .index-page .notion-page-cover-wrapper,

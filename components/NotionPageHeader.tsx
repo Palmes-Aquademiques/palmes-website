@@ -36,7 +36,7 @@ export const NotionPageHeader: React.FC<{
   }
 
   return (
-    <header className='z-40 h-20 overflow-visible bg-palmes-light bg-opacity-80 backdrop-saturate-150 backdrop-blur-lg drop-shadow-lg notion-header'>
+    <header className='z-40 overflow-visible bg-palmes-light bg-opacity-80 backdrop-saturate-150 backdrop-blur-lg drop-shadow-lg notion-header'>
       <div className='absolute top-0 left-0 right-0 flex flex-row items-center justify-start h-full px-3 mx-auto md:justify-between max-w-7xl gap-3'>
         <Sheet>
           <SheetTrigger className='flex md:hidden'>
