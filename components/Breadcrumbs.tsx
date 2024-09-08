@@ -26,8 +26,8 @@ export const Breadcrumbs: React.FC<{ block: types.Block }> = ({ block }) => {
         className='flex items-center justify-center h-full overflow-hidden align-center no-wrap text-ellipsis'
         {...pageLinkProps}
       >
-        <span className='breadcrumb'>
-          {breadcrumb?.icon && <PageIcon block={breadcrumb.block} />}
+        <span className='breadcrumb hover:!bg-transparent'>
+          {breadcrumb?.icon && <PageIcon block={breadcrumb.block} className=''/>}
         </span>
 
         <span className='title'>{name}</span>
