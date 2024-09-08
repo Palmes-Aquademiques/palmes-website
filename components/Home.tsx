@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 
 import { PageBlock } from 'notion-types'
 import { formatDate, getPageProperty } from 'notion-utils'
-import { NotionRenderer } from 'react-notion-x'
+import { NotionContextProvider, NotionRenderer } from 'react-notion-x'
 import { useSearchParam } from 'react-use'
 
 import * as config from '@/lib/config'
@@ -151,8 +151,17 @@ export const Home: React.FC<
         image={socialImage}
         url={canonicalPageUrl}
       />
-      <NotionPageHeader block={block as PageBlock} />
-      <div className='flex flex-col w-full h-full min-h-screen overflow-hidden'>
+      <NotionContextProvider
+        recordMap={recordMap}
+        components={components}
+        mapImageUrl={mapImageUrl}
+        mapPageUrl={siteMapPageUrl}
+        rootPageId={site.rootNotionPageId}
+        rootDomain={site.domain}
+      >
+        <NotionPageHeader block={block as PageBlock} />
+      </NotionContextProvider>
+      <div className='flex flex-col w-full h-full min-h-screen -mt-20'>
         <NotionRenderer
           pageTitle={<></>}
           disableHeader={true}
