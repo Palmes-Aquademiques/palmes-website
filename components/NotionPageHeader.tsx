@@ -43,7 +43,7 @@ export const NotionPageHeader: React.FC<{
             <Menu className='w-6 h-6' />
           </SheetTrigger>
           <SheetContent
-            className='flex flex-col md:hidden bg-palmes-light'
+            className='flex flex-col md:hidden'
             side='left'
           >
             <SheetHeader>
