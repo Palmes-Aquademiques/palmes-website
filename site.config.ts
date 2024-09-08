@@ -52,20 +52,7 @@ export default siteConfig({
   navigationLinks: [
     {
       title: 'Le Club',
-      subPages: [
-        {
-          title: 'Le Club en bref',
-          pageId: 'f82769a6f12a4a429b3c16af75b1194e',
-        },
-        {
-          title: 'La Plongée',
-          pageId: '65c0fde61ea74ddf9dfb8554c6928615'
-        },
-        {
-          title: 'La Nage en Eaux Vives',
-          pageId: '80b164d2c20d47548b9a20bb1866249d'
-        }
-      ]
+      pageId: 'f82769a6f12a4a429b3c16af75b1194e',
     },
     {
       title: 'Blog',
