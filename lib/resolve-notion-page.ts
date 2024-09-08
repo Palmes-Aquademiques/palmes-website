@@ -75,7 +75,8 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
           error: {
             message: `Not found "${rawPageId}"`,
             statusCode: 404
-          }
+          },
+          recordMap: null,
         }
       }
     }
