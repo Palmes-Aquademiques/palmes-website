@@ -8,6 +8,7 @@ export const getStaticProps = async () => {
   try {
     const { recordMap: subPageRecordMap } = await resolveNotionPage(
       domain,
+      // fetch another page (hardcoded) to split hero image display from data
       '1d47a41efc1043d9ba5972f872b61f51'
     )
     const props = await resolveNotionPage(domain)
