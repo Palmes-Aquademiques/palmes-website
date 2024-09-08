@@ -19,7 +19,6 @@ import {
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger
@@ -43,30 +42,32 @@ export const NotionPageHeader: React.FC<{
           <SheetTrigger className='flex md:hidden'>
             <Menu className='w-6 h-6' />
           </SheetTrigger>
-          <SheetContent className='flex flex-col md:hidden bg-palmes-light' side='left'>
+          <SheetContent
+            className='flex flex-col md:hidden bg-palmes-light'
+            side='left'
+          >
             <SheetHeader>
               <SheetTitle>
                 <Breadcrumbs block={block} />
               </SheetTitle>
             </SheetHeader>
             <div className='flex flex-col gap-4'>
-              {navigationLinks?.map((link, index) => {
+              {navigationLinks?.map((link) => {
                 if (link.subPages) {
                   return (
                     <ul className='flex w-64 p-4 gap-3' key={link.pageId}>
-                      <li>
-                        {link.subPages.map((link) => (
+                      {link.subPages.map((link) => (
+                        <li key={link.pageId}>
                           <components.PageLink
                             href={mapPageUrl(link.pageId)}
-                            key={index}
                             className={cn(
                               'text-palmes-dark rounded-lg font-medium px-3 py-2.5 text-center bg-opacity-50 text-lg hidden md:inline-block'
                             )}
                           >
                             {link.title}
                           </components.PageLink>
-                        ))}
-                      </li>
+                        </li>
+                      ))}
                     </ul>
                   )
                 }
