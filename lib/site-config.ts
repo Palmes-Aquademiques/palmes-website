@@ -11,6 +11,7 @@ export interface SiteConfig {
   language?: string
 
   facebook?: string
+  instagram?: string
   email?: string
 
   defaultPageIcon?: string | null

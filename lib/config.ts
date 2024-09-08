@@ -55,6 +55,7 @@ export const language: string = getSiteConfig('language', 'en')
 
 // social accounts
 export const facebook: string | null = getSiteConfig('facebook', null)
+export const instagram: string | null = getSiteConfig('instagram', null)
 export const email: string | null = getSiteConfig('email', null)
 
 // default notion values for site-wide consistency (optional; may be overridden on a per-page basis)

@@ -2,6 +2,7 @@ import * as React from 'react'
 
 import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText'
 import { FaFacebook } from '@react-icons/all-files/fa/FaFacebook'
+import { FaInstagram } from '@react-icons/all-files/fa/FaInstagram'
 
 import * as config from '@/lib/config'
 
@@ -15,18 +16,32 @@ export const FooterImpl: React.FC = () => {
   return (
     <footer className='flex flex-col items-center justify-between w-screen p-4 sm:flex-row bg-palmes-light gap-4'>
       <div>Made with ❤️ and 🤿 in Toulouse</div>
-      <div>Copyright {currentYear} {config.author}</div>
+      <div>
+        Copyright {currentYear} - {config.author}
+      </div>
 
       <div className={styles.social}>
         {config.facebook && (
           <a
             className={styles.facebook}
             href={`https://facebook.com/groups/${config.facebook}`}
-            title={`Faceboork @${config.facebook}`}
+            title={`Facebook @${config.facebook}`}
             target='_blank'
             rel='noopener noreferrer'
           >
             <FaFacebook />
+          </a>
+        )}
+
+        {config.instagram && (
+          <a
+            className={styles.instagram}
+            href={`https://instagram.com/${config.instagram}`}
+            title={`Instagram @${config.instagram}`}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <FaInstagram />
           </a>
         )}
 

@@ -77,8 +77,12 @@
   color: #157DC3;
 }
 
+.instagram:hover {
+  color: #833AB4;
+}
+
 .email:hover {
-  color: #00ab6c;
+  @apply text-palmes-dark;
 }
 
 .comments {

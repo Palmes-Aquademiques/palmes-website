@@ -119,10 +119,11 @@
 }
 
 .email .actionBgPane {
-  background: #00ab6c;
+  @apply bg-palmes-dark;
 }
-.email:hover {
-  border-color: #00ab6c;
+
+.instagram .actionBgPane {
+  background: #833AB4;
 }
 
 @media only screen and (max-width: 768px) {

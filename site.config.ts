@@ -19,6 +19,7 @@ export default siteConfig({
 
   // social usernames (optional)
   facebook: 'palmes.aquademiques',
+  instagram: 'palmes.aquademiques',
   email: 'palmes.aquademiques@gmail.com',
 
   // default notion icon and cover images for site-wide consistency (optional)
