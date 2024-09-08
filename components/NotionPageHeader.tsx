@@ -8,13 +8,10 @@ import { Header, useNotionContext } from 'react-notion-x'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuList,
-  NavigationMenuTrigger,
   NavigationMenuViewport,
-  navigationMenuTriggerStyle
 } from '@/components/ui/navigation-menu'
 import {
   Sheet,
