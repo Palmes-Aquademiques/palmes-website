@@ -1,14 +1,18 @@
 import * as React from 'react'
 
-import { NotionPage } from '@/components/NotionPage'
+import { Home } from '@/components/Home'
 import { domain } from '@/lib/config'
 import { resolveNotionPage } from '@/lib/resolve-notion-page'
 
 export const getStaticProps = async () => {
   try {
+    const { recordMap: subPageRecordMap } = await resolveNotionPage(
+      domain,
+      '1d47a41efc1043d9ba5972f872b61f51'
+    )
     const props = await resolveNotionPage(domain)
 
-    return { props, revalidate: 10 }
+    return { props: { ...props, subPageRecordMap }, revalidate: 10 }
   } catch (err) {
     console.error('page error', domain, err)
 
@@ -19,5 +23,5 @@ export const getStaticProps = async () => {
 }
 
 export default function NotionDomainPage(props) {
-  return <NotionPage {...props} />
+  return <Home {...props} />
 }

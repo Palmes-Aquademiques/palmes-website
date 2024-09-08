@@ -4,10 +4,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-import cs from 'classnames'
 import { PageBlock } from 'notion-types'
-import { formatDate, getBlockTitle, getPageProperty } from 'notion-utils'
-import BodyClassName from 'react-body-classname'
+import { formatDate, getPageProperty } from 'notion-utils'
 import { NotionRenderer } from 'react-notion-x'
 import { useSearchParam } from 'react-use'
 
@@ -15,16 +13,12 @@ import * as config from '@/lib/config'
 import * as types from '@/lib/types'
 import { mapImageUrl } from '@/lib/map-image-url'
 import { getCanonicalPageUrl, mapPageUrl } from '@/lib/map-page-url'
-import { searchNotion } from '@/lib/search-notion'
-import { useDarkMode } from '@/lib/use-dark-mode'
 
 import { Footer } from './Footer'
 import { Loading } from './Loading'
 import { NotionPageHeader } from './NotionPageHeader'
 import { Page404 } from './Page404'
-import { PageAside } from './PageAside'
 import { PageHead } from './PageHead'
-import styles from './styles.module.css'
 
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
@@ -34,12 +28,6 @@ const Collection = dynamic(() =>
   import('react-notion-x/build/third-party/collection').then(
     (m) => m.Collection
   )
-)
-const Pdf = dynamic(
-  () => import('react-notion-x/build/third-party/pdf').then((m) => m.Pdf),
-  {
-    ssr: false
-  }
 )
 const Modal = dynamic(
   () =>
@@ -93,12 +81,9 @@ const propertyTextValue = (
   return defaultFn()
 }
 
-export const NotionPage: React.FC<types.PageProps> = ({
-  site,
-  recordMap,
-  error,
-  pageId
-}) => {
+export const Home: React.FC<
+  types.PageProps & { subPageRecordMap: types.ExtendedRecordMap }
+> = ({ site, recordMap, subPageRecordMap, error, pageId }) => {
   const router = useRouter()
   const lite = useSearchParam('lite')
 
@@ -107,7 +92,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
       nextImage: Image,
       nextLink: Link,
       Collection,
-      Pdf,
       Modal,
       Header: NotionPageHeader,
       propertyLastEditedTimeValue,
@@ -116,11 +100,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
     }),
     []
   )
-
-  // lite mode is for oembed
-  const isLiteMode = lite === 'true'
-
-  const { isDarkMode } = useDarkMode()
 
   const siteMapPageUrl = React.useMemo(() => {
     const params: any = {}
@@ -133,21 +112,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const keys = Object.keys(recordMap?.block || {})
   const block = recordMap?.block?.[keys[0]]?.value
 
-  const isBlogPost =
-    block?.type === 'page' && block?.parent_table === 'collection'
-
-  const showTableOfContents = !!isBlogPost
-  const minTableOfContentsItems = 3
-
-  const pageAside = React.useMemo(
-    () => (
-      <PageAside block={block} recordMap={recordMap} isBlogPost={isBlogPost} />
-    ),
-    [block, recordMap, isBlogPost]
-  )
-
-  const footer = React.useMemo(() => <Footer />, [])
-
   if (router.isFallback) {
     return <Loading />
   }
@@ -155,16 +119,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
   if (error || !site || !block) {
     return <Page404 site={site} pageId={pageId} error={error} />
   }
-
-  const title = getBlockTitle(block, recordMap) || site.name
-
-  console.log('notion page', {
-    isDev: config.isDev,
-    title,
-    pageId,
-    rootNotionPageId: site.rootNotionPageId,
-    recordMap
-  })
 
   if (!config.isServer) {
     // add important objects to the window global for easy debugging
@@ -193,37 +147,46 @@ export const NotionPage: React.FC<types.PageProps> = ({
       <PageHead
         pageId={pageId}
         site={site}
-        title={title}
         description={socialDescription}
         image={socialImage}
         url={canonicalPageUrl}
       />
+      <NotionPageHeader block={block as PageBlock} />
+      <div className='flex flex-col w-full h-full min-h-screen overflow-hidden'>
+        <NotionRenderer
+          pageTitle={<></>}
+          disableHeader={true}
+          className='index-page'
+          bodyClassName='index-page items-center justify-center text-center'
+          components={components}
+          recordMap={recordMap}
+          rootPageId={site.rootNotionPageId}
+          rootDomain={site.domain}
+          fullPage={true}
+          previewImages={!!recordMap.preview_images}
+          mapPageUrl={siteMapPageUrl}
+          mapImageUrl={mapImageUrl}
+          footer={<></>}
+        />
 
-      {isLiteMode && <BodyClassName className='notion-lite' />}
-      {isDarkMode && <BodyClassName className='dark-mode' />}
-
-      <NotionRenderer
-        className={'content-page'}
-        bodyClassName={cs(styles.notion, 'content-page')}
-        darkMode={isDarkMode}
-        components={components}
-        recordMap={recordMap}
-        rootPageId={site.rootNotionPageId}
-        rootDomain={site.domain}
-        fullPage={!isLiteMode}
-        previewImages={!!recordMap.preview_images}
-        showCollectionViewDropdown={false}
-        showTableOfContents={showTableOfContents}
-        minTableOfContentsItems={minTableOfContentsItems}
-        defaultPageIcon={config.defaultPageIcon}
-        defaultPageCover={config.defaultPageCover}
-        defaultPageCoverPosition={config.defaultPageCoverPosition}
-        mapPageUrl={siteMapPageUrl}
-        mapImageUrl={mapImageUrl}
-        searchNotion={config.isSearchEnabled ? searchNotion : null}
-        pageAside={pageAside}
-        footer={footer}
-      />
+        <div className='flex flex-col items-center justify-center w-full h-screen overflow-hidden'>
+          <NotionRenderer
+            className={'index-subpage'}
+            bodyClassName={
+              'index-subpage flex flex-col items-center justify-center'
+            }
+            components={components}
+            recordMap={subPageRecordMap}
+            rootPageId={site.rootNotionPageId}
+            rootDomain={site.domain}
+            fullPage={false}
+            previewImages={!!recordMap.preview_images}
+            mapPageUrl={siteMapPageUrl}
+            mapImageUrl={mapImageUrl}
+          />
+          <Footer />
+        </div>
+      </div>
     </>
   )
 }
