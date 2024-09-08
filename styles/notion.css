@@ -28,8 +28,12 @@
 }
 
 .index-page .notion-page-content {
-  @apply bg-white rounded-lg bg-opacity-60 backdrop-saturate-150 backdrop-blur-lg drop-shadow-lg;
+  @apply p-3 bg-white rounded-lg bg-opacity-60 backdrop-saturate-150 backdrop-blur-lg drop-shadow-lg;
 }
+.index-page .notion-page-content-inner {
+  @apply items-center;
+}
+
 
 .title {
   @apply text-lg font-semibold text-palmes-dark;
