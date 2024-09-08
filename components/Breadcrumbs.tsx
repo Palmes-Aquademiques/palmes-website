@@ -27,7 +27,7 @@ export const Breadcrumbs: React.FC<{ block: types.Block }> = ({ block }) => {
         {...pageLinkProps}
       >
         <span className='breadcrumb'>
-          {breadcrumb.icon && <PageIcon block={breadcrumb.block} />}
+          {breadcrumb?.icon && <PageIcon block={breadcrumb.block} />}
         </span>
 
         <span className='title'>{name}</span>
