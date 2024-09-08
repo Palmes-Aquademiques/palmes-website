@@ -178,7 +178,7 @@ export const Home: React.FC<
           footer={<></>}
         />
 
-        <div className='flex flex-col items-center justify-center w-full h-screen overflow-hidden'>
+        <div className='flex flex-col items-center justify-center w-full h-screen'>
           <NotionRenderer
             className={'index-subpage'}
             bodyClassName={
