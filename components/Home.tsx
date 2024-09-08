@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 
 import { PageBlock } from 'notion-types'
 import { formatDate, getPageProperty } from 'notion-utils'
-import { NotionContextProvider, NotionRenderer } from 'react-notion-x'
+import { NotionContextProvider, NotionRenderer, PartialNotionContext } from 'react-notion-x'
 import { useSearchParam } from 'react-use'
 
 import * as config from '@/lib/config'
@@ -19,6 +19,8 @@ import { Loading } from './Loading'
 import { NotionPageHeader } from './NotionPageHeader'
 import { Page404 } from './Page404'
 import { PageHead } from './PageHead'
+
+const NotionContextProviderWithChildren = NotionContextProvider as React.FC<PartialNotionContext & {children: any}>;
 
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
@@ -151,7 +153,7 @@ export const Home: React.FC<
         image={socialImage}
         url={canonicalPageUrl}
       />
-      <NotionContextProvider
+      <NotionContextProviderWithChildren
         recordMap={recordMap}
         components={components}
         mapImageUrl={mapImageUrl}
@@ -160,7 +162,7 @@ export const Home: React.FC<
         rootDomain={site.domain}
       >
         <NotionPageHeader block={block as PageBlock} />
-      </NotionContextProvider>
+      </NotionContextProviderWithChildren>
       <div className='flex flex-col w-full h-full min-h-screen -mt-20'>
         <NotionRenderer
           pageTitle={<></>}
