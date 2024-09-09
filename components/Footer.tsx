@@ -14,7 +14,7 @@ export const FooterImpl: React.FC = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className='flex flex-col items-center justify-between w-screen p-4 sm:flex-row bg-palmes-light gap-4'>
+    <footer className='flex flex-col items-center justify-between w-screen p-4 text-sm sm:flex-row bg-palmes-light gap-4 text-palmes-dark'>
       <div>Made with ❤️ and 🤿 in Toulouse</div>
       <div>
         Copyright {currentYear} - {config.author}
