@@ -57,7 +57,7 @@ export default siteConfig({
     },
     {
       title: 'Blog',
-      pageId: '999088bd0eca4069a45b18bf2eb0c2ab'
+      pageId: '70f1ba0639354c2187e2fda28ccaac38'
     },
     {
       title: 'Galerie',
