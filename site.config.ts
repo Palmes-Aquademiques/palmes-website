@@ -56,6 +56,10 @@ export default siteConfig({
       pageId: 'f82769a6f12a4a429b3c16af75b1194e',
     },
     {
+      title: 'Les Activités',
+      pageId: 'afd41556c95d456593fe949266dc391d'
+    },
+    {
       title: 'Blog',
       pageId: '70f1ba0639354c2187e2fda28ccaac38'
     },
