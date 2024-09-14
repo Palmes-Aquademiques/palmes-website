@@ -52,8 +52,8 @@ export default siteConfig({
   navigationStyle: 'custom',
   navigationLinks: [
     {
-      title: 'Le Club',
-      pageId: 'f82769a6f12a4a429b3c16af75b1194e',
+      title: 'Les Sorties',
+      pageId: '1013a8ac49fc8030a090f0028bfee874',
     },
     {
       title: 'Les Activités',
