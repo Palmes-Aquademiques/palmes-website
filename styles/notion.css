@@ -11,6 +11,10 @@
   --notion-header-height: 5rem;
 }
 
+.notion-collection-header {
+  @apply hidden;
+}
+
 .index-page .notion-page-cover-wrapper,
 .index-page .notion-page-cover-wrapper span,
 .index-page .notion-page-cover-wrapper img {
