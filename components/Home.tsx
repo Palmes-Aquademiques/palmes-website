@@ -6,8 +6,11 @@ import { useRouter } from 'next/router'
 
 import { PageBlock } from 'notion-types'
 import { formatDate, getPageProperty } from 'notion-utils'
-import { NotionContextProvider, NotionRenderer, PartialNotionContext } from 'react-notion-x'
-import { useSearchParam } from 'react-use'
+import {
+  NotionContextProvider,
+  NotionRenderer,
+  PartialNotionContext
+} from 'react-notion-x'
 
 import * as config from '@/lib/config'
 import * as types from '@/lib/types'
@@ -20,7 +23,9 @@ import { NotionPageHeader } from './NotionPageHeader'
 import { Page404 } from './Page404'
 import { PageHead } from './PageHead'
 
-const NotionContextProviderWithChildren = NotionContextProvider as React.FC<PartialNotionContext & {children: any}>;
+const NotionContextProviderWithChildren = NotionContextProvider as React.FC<
+  PartialNotionContext & { children: any }
+>
 
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
@@ -87,7 +92,6 @@ export const Home: React.FC<
   types.PageProps & { subPageRecordMap: types.ExtendedRecordMap }
 > = ({ site, recordMap, subPageRecordMap, error, pageId }) => {
   const router = useRouter()
-  const lite = useSearchParam('lite')
 
   const components = React.useMemo(
     () => ({
@@ -104,12 +108,14 @@ export const Home: React.FC<
   )
 
   const siteMapPageUrl = React.useMemo(() => {
-    const params: any = {}
-    if (lite) params.lite = lite
-
-    const searchParams = new URLSearchParams(params)
+    const searchParams = new URLSearchParams({})
     return mapPageUrl(site, recordMap, searchParams)
-  }, [site, recordMap, lite])
+  }, [site, recordMap])
+
+  const siteSupPageUrl = React.useMemo(() => {
+    const searchParams = new URLSearchParams({})
+    return mapPageUrl(site, subPageRecordMap, searchParams)
+  }, [site, subPageRecordMap])
 
   const keys = Object.keys(recordMap?.block || {})
   const block = recordMap?.block?.[keys[0]]?.value
@@ -192,7 +198,7 @@ export const Home: React.FC<
             rootDomain={site.domain}
             fullPage={false}
             previewImages={!!recordMap.preview_images}
-            mapPageUrl={siteMapPageUrl}
+            mapPageUrl={siteSupPageUrl}
             mapImageUrl={mapImageUrl}
           />
           <Footer />
