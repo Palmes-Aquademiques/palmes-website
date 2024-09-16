@@ -11,7 +11,7 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'Les Palmes Aquadémiques',
-  domain: 'www.lespalmesaquademiques.fr',
+  domain: 'staging.lespalmesaquademiques.fr',
   author: 'Les Palmes Aquadémiques',
 
   // open graph metadata (optional)
