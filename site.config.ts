@@ -57,7 +57,7 @@ export default siteConfig({
   navigationLinks: [
     {
       title: 'Les Sorties',
-      pageId: '1013a8ac49fc8030a090f0028bfee874',
+      pageId: '1013a8ac49fc8030a090f0028bfee874'
     },
     {
       title: 'Les Activités',
